@@ -2,15 +2,12 @@ import transport from "../services/nodemailer.service.js";
 import env from "../config/enviroment.config.js";
 export async function sendMails  (req, res) {
     const { remitente, asunto, mensaje  } = req.body;
-console.log('req.body', req.body)
-
     const mailOptions = {
       from: remitente, // Utiliza el correo del remitente ingresado por el usuario
       to: env.googleEmail, // Coloca tu dirección de correo electrónico aquí
       subject: asunto,
-      text: mensaje
+      text: `${mensaje}\n\nCorreo del remitente: ${remitente}`
     };
-  
  transport.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
