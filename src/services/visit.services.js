@@ -2,10 +2,9 @@ import { visitModel } from "../models/visit.models.js";
 import axios from 'axios';
 import { format } from 'date-fns';
 class VisitService {
-    async trackVisit(clientIp) {
+    async trackVisit() {
         try {
-            // const url = `http://ip-api.com/json/`;
-            const url = `http://ip-api.com/json/${clientIp}`;
+            const url = `http://ip-api.com/json/`;
             // Obtener información de la IP usando ip-api.com
             const response = await axios.get(url);
             const { status, country, city, query: ip, lat, lon: long } = response.data;
