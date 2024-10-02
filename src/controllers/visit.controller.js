@@ -3,7 +3,7 @@ import requestIp from 'request-ip'; // Importar request-ip
 class VisitController {
     async trackVisit(req, res) {
         try {
-            const visit = await visitService.trackVisit();
+            const visit = await visitService.trackVisit(req);
             const {country, city, date} = visit;
             const data = {
                 country, city, date
